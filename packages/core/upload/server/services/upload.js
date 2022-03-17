@@ -189,11 +189,14 @@ module.exports = ({ strapi }) => ({
       const { width, height } = await getDimensions(fileData);
 
       _.assign(fileData, {
-        provider: config.provider,
         width,
         height,
       });
     }
+    
+    _.assign(fileData, {
+      provider: config.provider
+    });
 
     return this.add(fileData, { user });
   },
